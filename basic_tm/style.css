@@ -45,3 +45,16 @@ form[style] button {
     text-decoration: line-through;
     color: gray;
 }
+
+li {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+small {
+    color: #666;
+    font-size: 0.85em;
+    display: block;
+    margin-top: 2px;
+}
