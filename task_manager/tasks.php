@@ -1,4 +1,14 @@
 <?php
+// Set headers first to ensure JSON response
+header('Content-Type: application/json');
+header('Cache-Control: no-cache, must-revalidate');
+
+// Now include other files
+include 'db_connect.php';
+
+// Error handling - don't output HTML errors
+ini_set('display_errors', 0);
+error_reporting(0);
 header('Content-Type: application/json');
 include 'db_connect.php';
 
