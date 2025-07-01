@@ -17,9 +17,19 @@
         <?php
         $result = $conn->query("SELECT * FROM db_tasks ORDER BY id DESC");
         while ($row = $result->fetch_assoc()) {
+            $isChecked = $row['completed'] ? "checked" : "";
+            $taskClass = $row['completed'] ? "completed" : "";
+        
             echo "<li>
-                <strong>" . htmlspecialchars($row['task']) . "</strong><br>
+                <form action='tasks.php' method='POST' style='display:inline'>
+                    <input type='hidden' name='toggle_id' value='" . $row['id'] . "'>
+                    <input type='hidden' name='completed' value='" . ($row['completed'] ? 0 : 1) . "'>
+                    <input type='checkbox' name='toggle_complete' onChange='this.form.submit()' $isChecked>
+                </form>
+        
+                <span class='$taskClass'>" . htmlspecialchars($row['task']) . "</span><br>
                 <small>" . $row['created_at'] . "</small>
+        
                 <form action='tasks.php' method='POST' style='display:inline'>
                     <input type='hidden' name='delete_id' value='" . $row['id'] . "'>
                     <button type='submit' name='delete'>❌</button>

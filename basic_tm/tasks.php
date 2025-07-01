@@ -18,3 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     header("Location: index.php");
     exit();
 }
+
+// Mark task as completed or not
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['toggle_complete'])) {
+    $id = (int) $_POST['toggle_id'];
+    $status = (int) $_POST['completed'];
+    $conn->query("UPDATE db_tasks SET completed = $status WHERE id = $id");
+    header("Location: index.php");
+    exit();
+}

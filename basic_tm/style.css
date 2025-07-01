@@ -40,3 +40,8 @@ form[style] button {
     cursor: pointer;
     font-size: 12px;
 }
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
